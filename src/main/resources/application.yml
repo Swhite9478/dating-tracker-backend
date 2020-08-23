@@ -1,0 +1,27 @@
+server:
+  port: 9000
+
+
+# Enabling H2 Console
+spring:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    generate-ddl: true
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  datasource:
+    url: ${DB_URL}?currentSchema=${SCHEMA}&user=${DB_USER}&password=${DB_PASS}
+    platform: postgres
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: default
